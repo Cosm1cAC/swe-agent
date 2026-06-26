@@ -33,3 +33,4 @@ Thumbs.db
 # Project-level ignores
 dist/
 scripts/find_gh.bat
+scripts/add_path.bat

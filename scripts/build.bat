@@ -56,11 +56,13 @@ if exist dist\swe-agent.exe (
         echo [OK] dist\swe-agent.exe  (%%~zI bytes / !FILESIZE_MB! MB)
     )
     echo.
+    echo To install globally, run:
+    echo   scripts\install.bat
+    echo.
     echo Usage:
-    echo   dist\swe-agent.exe              REPL mode
-    echo   dist\swe-agent.exe --check      检查配置
-    echo   dist\swe-agent.exe --no-tui     传统输出模式
-    echo   dist\swe-agent.exe --task "修复 bug"  直接任务
+    echo   swe-agent.exe                  REPL 交互模式
+    echo   swe-agent.exe --check          检查配置
+    echo   swe-agent.exe --task "修复 bug"  直接执行任务
 ) else (
     echo [WARN] Output not found at dist\swe-agent.exe
 )
