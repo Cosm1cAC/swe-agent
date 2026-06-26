@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "minimal-swe-agent"
+version = "0.1.0"
+description = "A minimal, educational Software Engineering Agent built with a ReAct loop."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Learning" }]
+license = { text = "MIT" }
+dependencies = [
+    "openai>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.0.0",
+]
+
+[project.optional-dependencies]
+# Anthropic provider 是可选的: 阶段 4 才用到, 且需要单独装 anthropic 包
+# 用法: pip install -e ".[anthropic]"  或  pip install -e ".[dev,anthropic]"
+anthropic = [
+    "anthropic>=0.30.0",
+]
+build = [
+    "pyinstaller>=6.0",
+]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[project.scripts]
+swe-agent = "swe_agent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
