@@ -1,14 +1,14 @@
 @echo off
 setlocal enabledelayedexpansion
 chcp 65001 >nul
-title swe-agent 全局安装工具
+title swe-cli 全局安装工具
 
-echo ═══ Installing swe-agent globally ═══
+echo ═══ Installing swe-cli globally ═══
 echo.
 
 REM ── 检查 exe 是否存在 ──────────────────────────────────────
-if not exist "%~dp0..\dist\swe-agent.exe" (
-    echo [X] dist\swe-agent.exe not found!
+if not exist "%~dp0..\dist\swe-cli.exe" (
+    echo [X] dist\swe-cli.exe not found!
     echo     Run scripts\build.bat first to build the executable.
     pause
     exit /b 1
@@ -18,8 +18,8 @@ REM ── 安装目录: %USERPROFILE%\.swe-agent\bin ────────�
 set "INSTALL_DIR=%USERPROFILE%\.swe-agent\bin"
 if not exist "%INSTALL_DIR%" mkdir "%INSTALL_DIR%"
 
-echo [STEP] Copying swe-agent.exe to %INSTALL_DIR%...
-copy /Y "%~dp0..\dist\swe-agent.exe" "%INSTALL_DIR%\swe-agent.exe" >nul
+echo [STEP] Copying swe-cli.exe to %INSTALL_DIR%...
+copy /Y "%~dp0..\dist\swe-cli.exe" "%INSTALL_DIR%\swe-cli.exe" >nul
 if %ERRORLEVEL% neq 0 (
     echo [X] Failed to copy executable!
     pause
@@ -78,9 +78,9 @@ echo.
 echo ═══ Install Complete ═══
 echo.
 echo 现在可以在 PowerShell / CMD 中直接运行:
-echo   swe-agent
-echo   swe-agent --check
-echo   swe-agent --task "修复代码中的 bug"
+echo   swe-cli
+echo   swe-cli --check
+echo   swe-cli --task "修复代码中的 bug"
 echo.
 echo 配置文件需放置 .env 到运行目录:
 echo   %USERPROFILE%\.swe-agent\.env.example  (参考)

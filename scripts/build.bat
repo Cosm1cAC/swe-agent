@@ -1,8 +1,8 @@
 @echo off
 setlocal enabledelayedexpansion
 chcp 65001 >nul
-title Build swe-agent.exe
-echo ═══ Building swe-agent.exe ═══
+title Build swe-cli.exe
+echo ═══ Building swe-cli.exe ═══
 echo.
 
 REM ── 检查 PyInstaller ──────────────────────────────────────
@@ -40,7 +40,7 @@ pip install -e ".[build]" >nul
 
 REM ── 执行打包 ──────────────────────────────────────────────
 echo [STEP] Running PyInstaller...
-python -m PyInstaller swe-agent.spec --clean --noconfirm
+python -m PyInstaller swe-cli.spec --clean --noconfirm
 if %ERRORLEVEL% neq 0 (
     echo [ERROR] Build failed!
     exit /b %ERRORLEVEL%
@@ -49,22 +49,22 @@ if %ERRORLEVEL% neq 0 (
 REM ── 验证结果 ──────────────────────────────────────────────
 echo.
 echo ═══ Build Complete ═══
-if exist dist\swe-agent.exe (
-    for %%I in (dist\swe-agent.exe) do (
+if exist dist\swe-cli.exe (
+    for %%I in (dist\swe-cli.exe) do (
         set FILESIZE=%%~zI
         set /a FILESIZE_MB=%%~zI / (1024*1024)
-        echo [OK] dist\swe-agent.exe  (%%~zI bytes / !FILESIZE_MB! MB)
+        echo [OK] dist\swe-cli.exe  (%%~zI bytes / !FILESIZE_MB! MB)
     )
     echo.
     echo To install globally, run:
     echo   scripts\install.bat
     echo.
     echo Usage:
-    echo   swe-agent.exe                  REPL 交互模式
-    echo   swe-agent.exe --check          检查配置
-    echo   swe-agent.exe --task "修复 bug"  直接执行任务
+    echo   swe-cli.exe                  REPL 交互模式
+    echo   swe-cli.exe --check          检查配置
+    echo   swe-cli.exe --task "修复 bug"  直接执行任务
 ) else (
-    echo [WARN] Output not found at dist\swe-agent.exe
+    echo [WARN] Output not found at dist\swe-cli.exe
 )
 
 echo.

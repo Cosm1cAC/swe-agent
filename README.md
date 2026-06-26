@@ -1,6 +1,6 @@
-# Minimal SWE Agent
+# Mini SWE CLI
 
-一个 **用于学习** 的、基于 **ReAct 循环**（Reason + Act）的软件工程智能体。
+一个基于 **ReAct 循环**（Reason + Act）的软件工程命令行智能体，全屏 TUI 交互，对标 Claude Code CLI。
 
 代码刻意精简、分层清晰，目标是让你读懂每一行，理解一个 coding agent 是怎么搭起来的。
 
@@ -14,7 +14,7 @@
 4. **验证结果** — `run_shell` 跑测试或执行命令
 5. **反复迭代** — 直到任务完成或达到步数上限
 
-全部在 **REPL** 交互式环境中完成，支持斜杠命令和跨任务统计。
+全部在 **全屏 TUI REPL** 交互式环境中完成，支持斜杠命令和跨任务统计。
 
 ## 快速开始
 
@@ -30,12 +30,12 @@ cp .env.example .env
 python -m swe_agent --check
 
 # 4. 启动 REPL
-python -m swe_agent
+swe-cli
 ```
 
 **或者一次执行**：
 ```bash
-python -m swe_agent --task "修复 test_calc.py 中的 bug"
+swe-cli --task "修复 test_calc.py 中的 bug"
 ```
 
 ### 无 API key 也能体验
@@ -120,10 +120,10 @@ tests/
 ## 命令行选项
 
 ```
-usage: swe-agent [-h] [--version] [--check] [--task TASK]
-                 [--workspace WORKSPACE] [--max-steps MAX_STEPS]
+usage: swe-cli [-h] [--version] [--check] [--task TASK]
+               [--workspace WORKSPACE] [--max-steps MAX_STEPS]
 
-Minimal SWE Agent — 一个学习用的 ReAct 软件工程智能体。
+Mini SWE CLI — 一个基于 ReAct 循环的软件工程命令行智能体。
 
 options:
   -h, --help            显示帮助

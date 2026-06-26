@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "minimal-swe-agent"
+name = "mini-swe-cli"
 version = "0.1.0"
-description = "A minimal, educational Software Engineering Agent built with a ReAct loop."
+description = "Mini SWE CLI — 一个基于 ReAct 循环的软件工程命令行智能体。"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "Learning" }]
@@ -30,7 +30,7 @@ dev = [
 ]
 
 [project.scripts]
-swe-agent = "swe_agent.cli:main"
+swe-cli = "swe_agent.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -39,10 +39,10 @@ _session = SessionStats()
 
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        prog="swe-agent",
-        description="Minimal SWE Agent — 一个学习用的 ReAct 软件工程智能体。",
+        prog="swe-cli",
+        description="Mini SWE CLI — 一个基于 ReAct 循环的软件工程命令行智能体。",
     )
-    p.add_argument("--version", action="version", version=f"swe-agent {__version__}")
+    p.add_argument("--version", action="version", version=f"swe-cli {__version__}")
     p.add_argument(
         "--check", action="store_true",
         help="只检查配置是否就绪, 不启动 agent。",

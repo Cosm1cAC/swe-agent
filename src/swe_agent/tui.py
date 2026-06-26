@@ -50,7 +50,7 @@ class TUI:
         """打印启动信息。"""
         tools = build_default_tools(self.workspace)
         n_tools = len(tools.names())
-        self.console.rule(f"[bold cyan]Minimal SWE Agent[/] [dim]v{__version__}[/]")
+        self.console.rule(f"[bold cyan]Mini SWE CLI[/] [dim]v{__version__}[/]")
         self.console.print(
             f"  [dim]模型:[/]  {self._model}\n"
             f"  [dim]工具:[/]  {n_tools} 个 ({', '.join(tools.names())})\n"
@@ -139,7 +139,7 @@ class TUI:
 
     def _build_header(self, task: str) -> Panel:
         title = (
-            f" ═══ Minimal SWE Agent v{__version__}  —  {self._model} ═══ "
+            f" ═══ Mini SWE CLI v{__version__}  —  {self._model} ═══ "
         )
         subtitle = Text(
             f" 任务: {task[:70]}{'…' if len(task) > 70 else ''}",
