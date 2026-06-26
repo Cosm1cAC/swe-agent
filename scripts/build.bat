@@ -56,8 +56,28 @@ if exist dist\swe-cli.exe (
         echo [OK] dist\swe-cli.exe  (%%~zI bytes / !FILESIZE_MB! MB)
     )
     echo.
-    echo To install globally, run:
+    echo [STEP] Building Inno Setup installer...
+    if exist "%USERPROFILE%\AppData\Local\Programs\Inno Setup 6\ISCC.exe" (
+        "%USERPROFILE%\AppData\Local\Programs\Inno Setup 6\ISCC.exe" scripts\installer.iss >nul
+        if exist dist\Install-swe-cli-*.exe (
+            for %%I in (dist\Install-swe-cli-*.exe) do (
+                set FILESIZE2=%%~zI
+                set /a FILESIZE2_MB=%%~zI / (1024*1024)
+                echo [OK] dist\%%~nxI  (%%~zI bytes / !FILESIZE2_MB! MB)
+            )
+        ) else (
+            echo [WARN] Installer build skipped or failed.
+        )
+    ) else (
+        echo [INFO] Inno Setup not found — installer not built.
+        echo       Install from: https://jrsoftware.org/isdl.php
+    )
+    echo.
+    echo To install manually:
     echo   scripts\install.bat
+    echo.
+    echo Or distribute the installer:
+    echo   dist\Install-swe-cli-*.exe
     echo.
     echo Usage:
     echo   swe-cli.exe                  REPL 交互模式
